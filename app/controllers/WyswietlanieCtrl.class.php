@@ -9,11 +9,13 @@ class WyswietlanieCtrl
     private $form;
     private $result;
     private $listaPojazdow;
+    private $rolaUzytkownika;
     
     public function __construct()
     {
         $this->form = new CalcForm();
         $this->listaPojazdow;
+        $this->rolaUzytkownika;
     }
     
     public function action_wyswietl()
@@ -31,7 +33,10 @@ class WyswietlanieCtrl
     
     private function wypelnijListePojazdow()
     {
-        $idZalogowanegoUzytkownika = intval(SessionUtils::load("user",true)['ID_UZYTKOWNIKA']);
+        $this->rolaUzytkownika = intval(SessionUtils::load("user",true)['ROLA']);
+        if ($this->rolaUzytkownika == 1)
+        {
+            $idZalogowanegoUzytkownika = intval(SessionUtils::load("user",true)['ID_UZYTKOWNIKA']);
             $this->listaPojazdow = App::getDB()->select("POJAZDY", [
                 "ID_POJAZDU",
                 "MARKA_POJAZDU",
@@ -40,6 +45,19 @@ class WyswietlanieCtrl
             [
                 "ID_UZYTKOWNIKA"=>$idZalogowanegoUzytkownika
             ]);
+        }
+        else if ($this->rolaUzytkownika == 0)
+        {
+            $this->listaPojazdow = App::getDB()->select("POJAZDY", [
+                "[>]UZYTKOWNICY" => ["ID_UZYTKOWNIKA" => "ID_UZYTKOWNIKA"]
+            ],
+            [    
+                "POJAZDY.ID_POJAZDU",
+                "POJAZDY.MARKA_POJAZDU",
+                "POJAZDY.MODEL_POJAZDU",
+                "UZYTKOWNICY.LOGIN"
+            ]);
+        }
     }
     
     private function generujWidok()
@@ -48,6 +66,8 @@ class WyswietlanieCtrl
         App::getSmarty()->assign('form',$this->form);
         App::getSmarty()->assign('result',$this->result);
         App::getSmarty()->assign('listaPojazdow',$this->listaPojazdow);
+        App::getSmarty()->assign('idPojazdu',$this->form->idPojazdu);
+        App::getSmarty()->assign('rolaUzytkownika',$this->rolaUzytkownika);
         
         App::getSmarty()->display('wyswietlanie.tpl');
     }

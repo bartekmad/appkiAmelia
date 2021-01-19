@@ -9,7 +9,7 @@
             {if $listaPojazdow}
                 {if (count($listaPojazdow) > 0)}
                     {foreach $listaPojazdow as $dana}
-                        <option value="{$dana["ID_POJAZDU"]}">{$dana["MARKA_POJAZDU"]} {$dana["MODEL_POJAZDU"]}</option>
+                        <option value="{$dana["ID_POJAZDU"]}"{if $dana["ID_POJAZDU"]==$idPojazdu}selected{/if}>{$dana["MARKA_POJAZDU"]} {$dana["MODEL_POJAZDU"]}{if $rolaUzytkownika == 0} ({$dana["LOGIN"]}){/if}</option>
                     {/foreach}
                 {/if}
             {/if}

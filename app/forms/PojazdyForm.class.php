@@ -2,8 +2,6 @@
 
 class PojazdyForm 
 {
-    public $operacja;
-    public $uzytkownik;
     public $marka;
     public $model;
 }
