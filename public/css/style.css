@@ -4,7 +4,7 @@ body
     margin: 2em auto;
 }
 
-.header, .content, .menu
+.header, .content, .menu, .wcinka-msg
 { 
      margin: 0;
      color: #333;
@@ -17,18 +17,21 @@ body
     text-align: center;
 }
 
-.err, .inf
-{
-    padding: 1em 1em 1em 3em;
-    border-radius: 1em;
-    color: #222;
-}
-
 .err 
 {
+    padding: 1.5em 2em 0;
     background-color: #f88;
+      
 }
 .inf 
 {
+    padding: 1.5em 2em 0;
     background-color: #8f8;
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

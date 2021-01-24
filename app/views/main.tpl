@@ -43,26 +43,36 @@
 
 {block name=messages}
     {if $msgs->isError()}
-    <div class="err">
-        <ul>
-            {foreach $msgs->getMessages() as $msg}
-            {strip}
-                <li>{$msg->text}</li>
-            {/strip}
-            {/foreach}
-        </ul>
+    <div class="wcinka-msg">
+        <div class="pure-u-1-4">
+            <div class="err">
+                <ul>
+                    {foreach $msgs->getMessages() as $msg}
+                    {strip}
+                        <li>{$msg->text}</li>
+                    {/strip}
+                    {/foreach}
+                </ul>
+                <br>
+            </div>
+        </div>
     </div>
     {/if}
 
     {if $msgs->isInfo()}
-    <div class="inf">
-        <ul>
-            {foreach $msgs->getMessages() as $msg}
-            {strip}
-                <li>{$msg->text}</li>
-            {/strip}
-            {/foreach}
-        </ul>
+    <div class="wcinka-msg">
+        <div class="pure-u-1-4">
+            <div class="inf">
+                <ul>
+                    {foreach $msgs->getMessages() as $msg}
+                    {strip}
+                        <li>{$msg->text}</li>
+                    {/strip}
+                    {/foreach}
+                </ul>
+                <br>
+            </div>
+        </div>
     </div>
     {/if}
 {/block}

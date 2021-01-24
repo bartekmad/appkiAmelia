@@ -44,7 +44,7 @@
             <label for="haslo_uzytkownika">Hasło użytkownika: </label>
             <input id="haslo_uzytkownika" type="text" name="haslo" value="{$form->haslo}">
         </fieldset>
-        <button type="submit" class="pure-button pure-button-primary">Zmień hasło użytkownika</button>
+        <button type="submit" class="pure-button">Zmień hasło użytkownika</button>
     </form>
 {/if}
 

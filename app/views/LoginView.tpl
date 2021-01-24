@@ -1,7 +1,7 @@
 {extends file="main.tpl"}
 
 {block name=content}
-<form action="{$conf->action_url}login" method="post"  class="pure-form pure-form-aligned bottom-margin">
+<form action="{$conf->action_url}login" method="post"  class="pure-form pure-form-stacked">
     <legend>Logowanie do systemu</legend>
     <fieldset>
         <div class="pure-control-group">
