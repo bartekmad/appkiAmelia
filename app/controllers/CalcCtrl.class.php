@@ -194,7 +194,7 @@ class CalcCtrl
 
     public function action_wprowadzanie()
     {
-        App::getSmarty()->assign('page_title','Kalkulator spalania - wprowadzanie danych');
+        App::getSmarty()->assign('page_title','wprowadzanie danych');
         App::getSmarty()->assign('form',$this->form);
            
         $this->wypelnijListePojazdow();

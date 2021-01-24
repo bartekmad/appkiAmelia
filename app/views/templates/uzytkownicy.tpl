@@ -11,7 +11,7 @@
         </datalist>
     </select>
     <br>
-    <button type="submit" class="pure-button pure-button-primary">Wybierz operację</button>
+    <button type="submit" class="pure-button">Wybierz operację</button>
 </form> 
         
 {if $form->operacja==0}
@@ -22,7 +22,7 @@
             <label for="haslo_uzytkownika">Hasło użytkownika: </label>
             <input id="haslo_uzytkownika" type="text" name="haslo" value="{$form->haslo}">
         </fieldset>
-        <button type="submit" class="pure-button pure-button-primary">Dodaj użytkownika</button>
+        <button type="submit" class="pure-button">Dodaj użytkownika</button>
     </form>
 {/if}
 

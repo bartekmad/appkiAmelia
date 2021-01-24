@@ -69,7 +69,7 @@ class WyswietlanieCtrl
     
     private function generujWidok()
     {
-        App::getSmarty()->assign('page_title','Kalkulator spalania - wyświetlanie danych');
+        App::getSmarty()->assign('page_title','wyświetlanie danych');
         App::getSmarty()->assign('form',$this->form);
         App::getSmarty()->assign('result',$this->result);
         App::getSmarty()->assign('listaPojazdow',$this->listaPojazdow);

@@ -9,7 +9,7 @@
         <label for="model_pojazdu">Model pojazdu: </label>
         <input id="model_pojazdu" type="text" name="model" value="{$form->model}">
     </fieldset>
-    <button type="submit" class="pure-button pure-button-primary">Dodaj pojazd</button>
+    <button type="submit" class="pure-button">Dodaj pojazd</button>
 </form>
 
 {/block}

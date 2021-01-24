@@ -16,24 +16,24 @@
         </datalist>
     </select>
     <br>
-    <button type="submit" class="pure-button pure-button-primary">Wyświetl dane dla podanego pojazdu</button>
+    <button type="submit" class="pure-button">Wyświetl dane dla podanego pojazdu</button>
 </form>    
-
+<br>
 {if $result}
     {if (count($result) > 0)}
-        <table class="tg">
+        <table class="pure-table pure-table-horizontal">
             <thead>
                 <tr>
-                    <th class="tg-0lax">lp.</th>
-                    <th class="tg-0lax">data</th>
-                    <th class="tg-0lax">kwota</th>
-                    <th class="tg-0lax">cena za litr</th>
-                    <th class="tg-0lax">litry</th>
-                    <th class="tg-0lax">stan licznika start</th>
-                    <th class="tg-0lax">stan licznika stop</th>
-                    <th class="tg-0lax">km przejechane</th>
-                    <th class="tg-0lax">cena za 100km</th>
-                    <th class="tg-0lax">spalanie na 100km</th>
+                    <th>lp.</th>
+                    <th>data</th>
+                    <th>kwota</th>
+                    <th>cena za litr</th>
+                    <th>litry</th>
+                    <th>stan licznika start</th>
+                    <th>stan licznika stop</th>
+                    <th>km przejechane</th>
+                    <th>cena za 100km</th>
+                    <th>spalanie na 100km</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,16 +44,16 @@
                         {$cena_100 = $dana["KWOTA"] / $km * 100}
                         {$spalanie_100 = $litry / $km * 100}
                         {$czyPusta = $dana["STAN_STOP"] != null}
-                        <td class="tg-0lax">{$dana["ID"]}</td>
-                        <td class="tg-0lax">{$dana["DATA"]}</td>
-                        <td class="tg-0lax">{$dana["KWOTA"]} zł</td>
-                        <td class="tg-0lax">{$dana["CENA_LITR"]} zł</td>
-                        <td class="tg-0lax">{round($litry, 2)}</td>
-                        <td class="tg-0lax">{$dana["STAN_START"]}</td>
-                        <td class="tg-0lax">{$dana["STAN_STOP"]}</td>
-                        <td class="tg-0lax">{if $czyPusta}{$km}{/if}</td>
-                        <td class="tg-0lax">{if $czyPusta}{round($cena_100, 2)} zł{/if}</td>
-                        <td class="tg-0lax">{if $czyPusta}{round($spalanie_100, 2)} l{/if}</td>
+                        <td>{$dana["ID"]}</td>
+                        <td>{$dana["DATA"]}</td>
+                        <td>{$dana["KWOTA"]} zł</td>
+                        <td>{$dana["CENA_LITR"]} zł</td>
+                        <td>{round($litry, 2)}</td>
+                        <td>{$dana["STAN_START"]}</td>
+                        <td>{$dana["STAN_STOP"]}</td>
+                        <td>{if $czyPusta}{$km}{/if}</td>
+                        <td>{if $czyPusta}{round($cena_100, 2)} zł{/if}</td>
+                        <td>{if $czyPusta}{round($spalanie_100, 2)} l{/if}</td>
                     </tr>
                 {/foreach}
             </tbody>

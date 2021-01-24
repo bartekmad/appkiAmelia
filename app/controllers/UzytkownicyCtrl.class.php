@@ -182,7 +182,7 @@ class UzytkownicyCtrl {
     
     private function generujWidok()
     {
-        App::getSmarty()->assign('page_title','Kalkulator spalania - zarządzanie użytkownikami');
+        App::getSmarty()->assign('page_title','zarządzanie użytkownikami');
         App::getSmarty()->assign('form',$this->form);
         App::getSmarty()->assign('listaUzytkownikow',$this->listaUzytkownikow);
                 

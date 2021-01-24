@@ -76,7 +76,7 @@ class LoginCtrl{
 	}	
 	
 	public function generateView(){
-                App::getSmarty()->assign('page_title','Kalkulator spalania - panel logowania');
+                App::getSmarty()->assign('page_title','panel logowania');
 		App::getSmarty()->assign('form',$this->form); // dane formularza do widoku
 		App::getSmarty()->display('LoginView.tpl');		
 	}

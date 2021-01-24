@@ -83,7 +83,7 @@ class PojazdyCtrl
     
     private function generujWidok()
     {
-        App::getSmarty()->assign('page_title','Kalkulator spalania - dodawanie pojazdu');
+        App::getSmarty()->assign('page_title','dodawanie pojazdu');
         App::getSmarty()->assign('form',$this->form);     
         
         App::getSmarty()->display('pojazdy.tpl');
