@@ -110,18 +110,15 @@ class CalcCtrl
         ]);
         if (count($wynik) > 0)
         {
-            foreach($wynik as $dana)
+            if ($this->form->stanPoczatkowy <= $wynik[0]["STAN_START"])
             {
-                if ($this->form->stanPoczatkowy <= $dana["STAN_START"])
-                {
-                    App::getMessages()->addMessage(new Message('Stan licznika musi być większy od poprzedniego!', Message::ERROR));
-                    $walidacja = false;
-                }
-                if ($this->form->dataTankowania < $dana["DATA"])
-                {
-                    App::getMessages()->addMessage(new Message('Data tankowania nie może być wcześniejsza od poprzedniej!', Message::ERROR));
-                    $walidacja = false;
-                }
+                App::getMessages()->addMessage(new Message('Stan licznika musi być większy od poprzedniego!', Message::ERROR));
+                $walidacja = false;
+            }
+            if ($this->form->dataTankowania < $wynik[0]["DATA"])
+            {
+                App::getMessages()->addMessage(new Message('Data tankowania nie może być wcześniejsza od poprzedniej!', Message::ERROR));
+                $walidacja = false;
             }
         }
         return $walidacja;
@@ -148,16 +145,13 @@ class CalcCtrl
         try{
             if (count($wynik) > 0)
             {
-                foreach($wynik as $dana)
+                if ($stanPoczatkowy > $wynik[0]["STAN_START"])
                 {
-                    if ($stanPoczatkowy > $dana["STAN_START"])
-                    {
-                        App::getDB()->update("DANE_TANKOWAN",[
-                           "STAN_STOP"=>$stanPoczatkowy],
-                           [
-                           "ID"=>$dana["ID"]
-                        ]);
-                    }
+                    App::getDB()->update("DANE_TANKOWAN",[
+                        "STAN_STOP"=>$stanPoczatkowy],
+                        [
+                        "ID"=>$wynik[0]["ID"]
+                    ]);
                 }
             }
 

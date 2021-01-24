@@ -37,6 +37,7 @@
                 </tr>
             </thead>
             <tbody>
+                {$ID = count($result)}
                 {foreach $result as $dana}
                     <tr>
                         {$litry = $dana["KWOTA"] / $dana["CENA_LITR"]}
@@ -44,7 +45,7 @@
                         {$cena_100 = $dana["KWOTA"] / $km * 100}
                         {$spalanie_100 = $litry / $km * 100}
                         {$czyPusta = $dana["STAN_STOP"] != null}
-                        <td>{$dana["ID"]}</td>
+                        <td>{$ID}</td>
                         <td>{$dana["DATA"]}</td>
                         <td>{$dana["KWOTA"]} zł</td>
                         <td>{$dana["CENA_LITR"]} zł</td>
@@ -54,6 +55,7 @@
                         <td>{if $czyPusta}{$km}{/if}</td>
                         <td>{if $czyPusta}{round($cena_100, 2)} zł{/if}</td>
                         <td>{if $czyPusta}{round($spalanie_100, 2)} l{/if}</td>
+                        {$ID = $ID - 1}
                     </tr>
                 {/foreach}
             </tbody>
