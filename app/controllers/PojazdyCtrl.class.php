@@ -4,6 +4,7 @@ use app\forms\PojazdyForm;
 use core\App;
 use core\SessionUtils;
 use core\Message;
+use core\ParamUtils;
 
 class PojazdyCtrl
 {
@@ -32,8 +33,8 @@ class PojazdyCtrl
     
     private function pobierzParametry()
     {
-        $this->form->marka = isset($_REQUEST['marka']) ? $_REQUEST['marka'] : null;
-        $this->form->model = isset($_REQUEST['model']) ? $_REQUEST['model'] : null;
+        $this->form->marka = ParamUtils::getFromRequest('marka',true,'Błędne wywołanie aplikacji');
+        $this->form->model = ParamUtils::getFromRequest('model',true,'Błędne wywołanie aplikacji');
     }
     
     private function czyWpisaneWartosci()

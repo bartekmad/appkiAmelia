@@ -19,7 +19,7 @@
         <ul>         
             {if isset($conf->roles['0'])}
                 <li>
-                    <a href="{$conf->action_root}zarzadzajUzytkownikami">Zarządzaj użytkownikami</a>
+                    <a href="{$conf->action_root}panelUzytkownikow">Zarządzaj użytkownikami</a>
                 </li>
             {/if}
             <li>
@@ -29,7 +29,7 @@
                <a href="{$conf->action_root}wprowadz">Wprowadz dane tankowania</a>
             </li>
             <li>
-                <a href="{$conf->action_root}wyswietl">Wyswietl dane tankowan</a>
+                <a href="{$conf->action_root}wyswietlanie">Wyswietl dane tankowan</a>
             </li>
             <li style="float:right">
                 <a href="{$conf->action_root}logout">Wyloguj</a>

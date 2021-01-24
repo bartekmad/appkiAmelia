@@ -4,6 +4,7 @@ use app\forms\UzytkownicyForm;
 use core\App;
 use core\SessionUtils;
 use core\Message;
+use core\ParamUtils;
 
 class UzytkownicyCtrl {
     
@@ -16,6 +17,11 @@ class UzytkownicyCtrl {
         $this->listaUzytkownikow;
     }
     
+    public function action_panelUzytkownikow()
+    {
+        $this->generujWidok();
+    }
+    
     public function action_zarzadzajUzytkownikami()
     {
         $this->ustawOperacje();
@@ -26,7 +32,7 @@ class UzytkownicyCtrl {
     
     private function ustawOperacje()
     {
-        $this->form->operacja = isset($_REQUEST['operacja']) ? $_REQUEST['operacja'] : null;
+        $this->form->operacja = ParamUtils::getFromRequest('operacja',true,'Błędne wywołanie aplikacji');
     }
     
     private function pobierzListeUzytkownikow()
@@ -47,9 +53,9 @@ class UzytkownicyCtrl {
     
     private function pobierzParametry()
     {
-        $this->form->login = isset($_REQUEST['login']) ? $_REQUEST['login'] : null;
-        $this->form->uzytkownik = isset($_REQUEST['uzytkownik']) ? $_REQUEST['uzytkownik'] : null;
-        $this->form->haslo = isset($_REQUEST['haslo']) ? $_REQUEST['haslo'] : null;
+        $this->form->login = ParamUtils::getFromRequest('login',true,'Błędne wywołanie aplikacji');
+        $this->form->uzytkownik = ParamUtils::getFromRequest('uzytkownik',true,'Błędne wywołanie aplikacji');
+        $this->form->haslo = ParamUtils::getFromRequest('haslo',true,'Błędne wywołanie aplikacji');
     }
     
     private function walidujDodawanieUzytkownika()

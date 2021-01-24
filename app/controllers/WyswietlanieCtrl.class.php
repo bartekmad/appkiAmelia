@@ -3,6 +3,7 @@
 use app\forms\CalcForm;
 use core\App;
 use core\SessionUtils;
+use core\ParamUtils;
 
 class WyswietlanieCtrl
 {
@@ -25,9 +26,15 @@ class WyswietlanieCtrl
         $this->generujWidok();
     }
     
+        public function action_wyswietlanie()
+    {
+        $this->wypelnijListePojazdow();
+        $this->generujWidok();
+    }
+    
     private function pobierzDane()
     {
-        $this->form->idPojazdu = isset($_REQUEST['idPojazdu']) ? $_REQUEST['idPojazdu'] : null;
+        $this->form->idPojazdu = ParamUtils::getFromRequest('idPojazdu',true,'Błędne wywołanie aplikacji');
         $this->result = App::getDB()->select("DANE_TANKOWAN", "*", ["ID_POJAZDU" => $this->form->idPojazdu], ["ORDER"=>["ID" => "ASC"]]);
     }
     

@@ -5,6 +5,7 @@ use app\transfer\CalcResult;
 use core\Message;
 use core\SessionUtils;
 use core\App;
+use core\ParamUtils;
 
 class CalcCtrl
 {
@@ -32,11 +33,11 @@ class CalcCtrl
     
     private function pobierzParametry()
     {
-        $this->form->kwotaTankowania = isset($_REQUEST['kwotaTankowania']) ? $_REQUEST['kwotaTankowania'] : null;
-        $this->form->cenaZaLitr = isset($_REQUEST['cenaZaLitr']) ? $_REQUEST['cenaZaLitr'] : null;
-        $this->form->stanPoczatkowy = isset($_REQUEST['stanPoczatkowy']) ? $_REQUEST['stanPoczatkowy'] : null;
-        $this->form->dataTankowania = isset($_REQUEST['dataTankowania']) ? $_REQUEST['dataTankowania'] : null;
-        $this->form->idPojazdu = isset($_REQUEST['idPojazdu']) ? $_REQUEST['idPojazdu'] : null;
+        $this->form->kwotaTankowania = ParamUtils::getFromRequest('kwotaTankowania',true,'Błędne wywołanie aplikacji');
+        $this->form->cenaZaLitr = ParamUtils::getFromRequest('cenaZaLitr',true,'Błędne wywołanie aplikacji');
+        $this->form->stanPoczatkowy = ParamUtils::getFromRequest('stanPoczatkowy',true,'Błędne wywołanie aplikacji');
+        $this->form->dataTankowania = ParamUtils::getFromRequest('dataTankowania',true,'Błędne wywołanie aplikacji');
+        $this->form->idPojazdu = ParamUtils::getFromRequest('idPojazdu',true,'Błędne wywołanie aplikacji');
     }
 
     private function czyWpisaneWartosci()
