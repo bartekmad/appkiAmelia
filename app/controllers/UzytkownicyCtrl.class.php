@@ -42,7 +42,7 @@ class UzytkownicyCtrl {
     
     public function action_dodajUzytkownika()
     {
-        $this->pobierzParametry();
+        $this->pobierzParametryDodawania();
         if ($this->czyWpisaneWartosciDodawania())
         {
             if ($this->walidujDodawanieUzytkownika())
@@ -51,9 +51,14 @@ class UzytkownicyCtrl {
         $this->generujWidok();   
     }
     
-    private function pobierzParametry()
+    private function pobierzParametryDodawania()
     {
         $this->form->login = ParamUtils::getFromRequest('login',true,'Błędne wywołanie aplikacji');
+        $this->form->haslo = ParamUtils::getFromRequest('haslo',true,'Błędne wywołanie aplikacji');
+    }
+    
+    private function pobierzParametryEdycji()
+    {
         $this->form->uzytkownik = ParamUtils::getFromRequest('uzytkownik',true,'Błędne wywołanie aplikacji');
         $this->form->haslo = ParamUtils::getFromRequest('haslo',true,'Błędne wywołanie aplikacji');
     }
@@ -122,7 +127,7 @@ class UzytkownicyCtrl {
     
     public function action_edytujUzytkownika()
     {
-        $this->pobierzParametry();
+        $this->pobierzParametryEdycji();
         if ($this->czyWpisaneWartosciEdytowania())
         {
             if ($this->walidujEdytowanieUzytkownika())
