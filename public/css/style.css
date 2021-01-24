@@ -4,7 +4,7 @@ body
     margin: 2em auto;
 }
 
-.header, .footer, .content
+.header, .footer, .content, .panel
 { 
     margin: 1em auto;
     border: 0.01em solid #aaa;
@@ -71,4 +71,31 @@ body
 {
     text-align:left;
     vertical-align:top
+}
+
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li
+{
+  float: left;
+}
+
+li a
+{
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover
+{
+  background-color: #ddd;
 }

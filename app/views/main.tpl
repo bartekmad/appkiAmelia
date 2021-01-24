@@ -14,29 +14,29 @@
 	<h1>{$page_title|default:"Tytuł domyślny"}</h1>
 </div>
 
-<div class="panel">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	{if count($conf->roles)>0}                
+{if count($conf->roles)>0}
+    <div class="panel">
+        <ul>         
             {if isset($conf->roles['0'])}
-		<li class="nav-item">
-                    <a class="nav-link" href="{$conf->action_root}zarzadzajUzytkownikami">Zarządzaj użytkownikami</a>
+                <li>
+                    <a href="{$conf->action_root}zarzadzajUzytkownikami">Zarządzaj użytkownikami</a>
                 </li>
             {/if}
-                <li class="nav-item">
-                    <a class="nav-link" href="{$conf->action_root}zarzadzajPojazdami">Zarządzaj pojazdami</a>
-		</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{$conf->action_root}wprowadz">Wprowadz dane tankowania</a>
-		</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{$conf->action_root}wyswietl">Wyswietl dane tankowan</a>
-		</li>
-		<li class="nav-item">
-                    <a class="nav-link" href="{$conf->action_root}logout">Wyloguj</a>
-		</li>
-        {/if}
-	</ul>
-</div>
+            <li>
+                <a href="{$conf->action_root}zarzadzajPojazdami">Zarządzaj pojazdami</a>
+            </li>
+            <li>
+               <a href="{$conf->action_root}wprowadz">Wprowadz dane tankowania</a>
+            </li>
+            <li>
+                <a href="{$conf->action_root}wyswietl">Wyswietl dane tankowan</a>
+            </li>
+            <li style="float:right">
+                <a href="{$conf->action_root}logout">Wyloguj</a>
+            </li>
+        </ul>
+    </div>
+{/if}
 
 <div class="messages">
 {block name=messages}
