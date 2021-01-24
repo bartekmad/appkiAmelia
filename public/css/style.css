@@ -4,7 +4,7 @@ body
     margin: 2em auto;
 }
 
-.header, .footer, .content, .panel
+.header, .footer, .content, .panel, .messages
 { 
     margin: 1em auto;
     border: 0.01em solid #aaa;
@@ -24,7 +24,7 @@ body
     margin: 1em auto;
 }
 
-.err, .inf, .res
+.err, .inf
 {
     padding: 1em 1em 1em 3em;
     border-radius: 1em;
@@ -38,10 +38,6 @@ body
 .inf 
 {
     background-color: #8f8;
-}
-.res
-{
-    background-color: #ff0;
 }
 
 .tg 

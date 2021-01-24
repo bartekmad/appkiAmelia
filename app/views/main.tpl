@@ -38,35 +38,37 @@
     </div>
 {/if}
 
+{if $msgs->isError() or $msgs->isInfo()}
 <div class="messages">
-{block name=messages}
+    {block name=messages}
 
-{if $msgs->isError()}
-<div class="messages error bottom-margin top-margin">
-    <ul>
-	{foreach $msgs->getMessages() as $msg}
-	{strip}
-            <li>{$msg->text}</li>
-	{/strip}
-	{/foreach}
-    </ul>
+    {if $msgs->isError()}
+    <div class="err">
+        <ul>
+            {foreach $msgs->getMessages() as $msg}
+            {strip}
+                <li>{$msg->text}</li>
+            {/strip}
+            {/foreach}
+        </ul>
+    </div>
+    {/if}
+
+    {if $msgs->isInfo()}
+    <div class="inf">
+        <ul>
+            {foreach $msgs->getMessages() as $msg}
+            {strip}
+                <li>{$msg->text}</li>
+            {/strip}
+            {/foreach}
+        </ul>
+    </div>
+    {/if}
+
+    {/block}
 </div>
 {/if}
-
-{if $msgs->isInfo()}
-<div class="messages info bottom-margin top-margin">
-    <ul>
-	{foreach $msgs->getMessages() as $msg}
-	{strip}
-            <li>{$msg->text}</li>
-	{/strip}
-	{/foreach}
-    </ul>
-</div>
-{/if}
-
-{/block}
-</div>
 
 <div class="content">
 {block name=content}
