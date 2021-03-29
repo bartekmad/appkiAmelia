@@ -7,6 +7,7 @@
     <title>Kalkulator spalania - {$page_title|default:"Tytuł domyślny"}</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <link rel="stylesheet" href="{$conf->app_url}/css/style.css">	
+    <script type="text/javascript" src="{$conf->app_url}/js/functions.js"></script>
 </head>
 <body>
 

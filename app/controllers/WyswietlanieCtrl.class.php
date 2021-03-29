@@ -99,7 +99,7 @@ class WyswietlanieCtrl
         App::getSmarty()->assign('form',$this->form);
         App::getSmarty()->assign('result',$this->result);
         App::getSmarty()->assign('listaPojazdow',$this->listaPojazdow);
-        App::getSmarty()->assign('idPojazdu',$this->form->idPojazdu);
+        App::getSmarty()->assign('idPojazdu',SessionUtils::load("idPojazdu",true));
         App::getSmarty()->assign('rolaUzytkownika',$this->rolaUzytkownika);
         
         App::getSmarty()->display('wyswietlanie.tpl');

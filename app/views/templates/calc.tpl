@@ -25,7 +25,7 @@
             </datalist>
         </select>
     </fieldset>
-    <button type="submit" class="pure-button">Wpisz dane do bazy</button>
+    <button type="submit" onclick="potwierdzOperacje('na pewno?'); return false;" class="pure-button">Wpisz dane do bazy</button>
 </form>
 
 {/block}
