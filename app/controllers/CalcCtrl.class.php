@@ -102,11 +102,10 @@ class CalcCtrl
             "STAN_START",
             "DATA"],
             [
-            "ID_POJAZDU"=>$this->form->idPojazdu
-            ],
-            [
+            "ID_POJAZDU"=>$this->form->idPojazdu,
             "ORDER"=>["ID" => "DESC"],
             "LIMIT"=>1 
+                        
         ]);
         if (count($wynik) > 0)
         {

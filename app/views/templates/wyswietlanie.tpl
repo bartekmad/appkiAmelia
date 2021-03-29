@@ -17,7 +17,18 @@
     </select>
     <br>
     <button type="submit" class="pure-button">Wyświetl dane dla podanego pojazdu</button>
-</form>    
+</form>
+<br>        
+
+{if $stronaAktualna}
+strona {$stronaAktualna} z {$stronIlosc}
+{/if}
+{if $stronaAktualna < $stronIlosc}
+    <form class="pure-form pure-form-stacked" action="{$conf->action_url}nastepnaStrona" method="post">
+        <button type="submit" class="pure-button">Nastepna strona</button>
+    </form>
+{/if}    
+    
 <br>
 {if $result}
     {if (count($result) > 0)}
@@ -38,6 +49,7 @@
             </thead>
             <tbody>
                 {$ID = count($result)}
+                {$ID = $ID * $stronaAktualna}
                 {foreach $result as $dana}
                     <tr>
                         {$litry = $dana["KWOTA"] / $dana["CENA_LITR"]}

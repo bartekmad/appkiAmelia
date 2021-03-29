@@ -11,6 +11,8 @@ class WyswietlanieCtrl
     private $result;
     private $listaPojazdow;
     private $rolaUzytkownika;
+    private $stronaAktualna;
+    private $stronIlosc;
     
     public function __construct()
     {
@@ -21,8 +23,26 @@ class WyswietlanieCtrl
     
     public function action_wyswietl()
     {
+        $this->stronaAktualna = 1;
+        SessionUtils::store("stronaAktualna", $this->stronaAktualna);
         $this->wypelnijListePojazdow();
         $this->pobierzDane();
+        $this->stronIlosc = App::getDB()->count("DANE_TANKOWAN", ["ID_POJAZDU" => $this->form->idPojazdu]) / 10;
+        $this->stronIlosc = intval($this->stronIlosc + 1);
+        SessionUtils::store("stronIlosc", $this->stronIlosc);
+        App::getSmarty()->assign('stronaAktualna',$this->stronaAktualna);
+        App::getSmarty()->assign('stronIlosc',$this->stronIlosc);
+        $this->generujWidok();
+    }
+    
+    public function action_nastepnaStrona()
+    {
+        $this->wypelnijListePojazdow();
+        $this->stronaAktualna = SessionUtils::load("stronaAktualna",true) + 1;
+        $this->stronIlosc = SessionUtils::load("stronIlosc",true);
+        $this->pobierzDane();
+        App::getSmarty()->assign('stronaAktualna',$this->stronaAktualna);
+        App::getSmarty()->assign('stronIlosc',$this->stronIlosc);
         $this->generujWidok();
     }
     
@@ -34,8 +54,14 @@ class WyswietlanieCtrl
     
     private function pobierzDane()
     {
-        $this->form->idPojazdu = ParamUtils::getFromRequest('idPojazdu',true,'Błędne wywołanie aplikacji');
-        $this->result = App::getDB()->select("DANE_TANKOWAN", "*", ["ID_POJAZDU" => $this->form->idPojazdu], ["ORDER"=>["ID" => "ASC"]]);
+        if (ParamUtils::getFromRequest('idPojazdu'))
+        {
+            $this->form->idPojazdu = ParamUtils::getFromRequest('idPojazdu',true,'Błędne wywołanie aplikacji');
+            SessionUtils::store("idPojazdu", $this->form->idPojazdu);
+        }
+
+        $offset = ($this->stronaAktualna - 1) * 10;
+        $this->result = App::getDB()->select("DANE_TANKOWAN", "*", ["ID_POJAZDU" => SessionUtils::load("idPojazdu",true), "ORDER"=>["ID" => "DESC"], "LIMIT"=>[$offset,10]]);
     }
     
     private function wypelnijListePojazdow()

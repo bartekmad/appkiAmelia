@@ -9,6 +9,7 @@ Utils::addRoute('wprowadzanie', 'CalcCtrl', ['0','1']);
 Utils::addRoute('wykonaj', 'CalcCtrl', ['0','1']);
 Utils::addRoute('wyswietlanie', 'WyswietlanieCtrl', ['0','1']);
 Utils::addRoute('wyswietl', 'WyswietlanieCtrl', ['0','1']);
+Utils::addRoute('nastepnaStrona', 'WyswietlanieCtrl', ['0','1']);
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl');
 Utils::addRoute('zarzadzajUzytkownikami', 'UzytkownicyCtrl', ['0']);
