@@ -20,10 +20,10 @@
 </form>
 <br>        
 
-{if $stronaAktualna}
+{if $result}
 strona {$stronaAktualna} z {$stronIlosc}
 {/if}
-{if $stronaAktualna < $stronIlosc}
+{if $result && ( $stronaAktualna < $stronIlosc)}
     <form class="pure-form pure-form-stacked" action="{$conf->action_url}nastepnaStrona" method="post">
         <button type="submit" class="pure-button">Nastepna strona</button>
     </form>
